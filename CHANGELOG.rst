@@ -5,19 +5,28 @@ Changelog
 .. TODO After finding how to test TIRS reference frame, add it to changelog.
         And double-check the constellation boundaries array.
 
-v1.42 — Unreleased
-------------------
+v1.42 — 2022 February 6
+-----------------------
+
+* Added two new position methods
+  :meth:`~skyfield.positionlib.ICRF.phase_angle()`
+  and
+  :meth:`~skyfield.positionlib.ICRF.fraction_illuminated()`
+  that, given an illuminator (usually the Sun) as their argument,
+  compute whether the observer is looking at the bright side or the dark
+  side of the target body.
+  They replace a pair of old functions in the almanac module.
 
 * The almanac routine :func:`~skyfield.almanac.moon_nodes()` would
-  sometimes skip nodes that were closer together than 14.0 days, so it
-  has been tightened down and should now detect all lunar nodes.
+  sometimes skip nodes that were closer together than 14.0 days.  It has
+  been tightened down and should now detect all lunar nodes.
   `#662 <https://github.com/skyfielders/python-skyfield/issues/662>`_
 
 * Time objects now feature a :meth:`~skyfield.timelib.Time.to_astropy`
   method.
 
 * The position method :meth:`~skyfield.positionlib.ICRF.to_skycoord` now
-  sets the `frame` attribute of the sky coordinate it returns, and for
+  sets the ``frame`` attribute of the sky coordinate it returns, and for
   now only supports barycentric and geocentric positions.
   `#577 <https://github.com/skyfielders/python-skyfield/issues/577>`_
 
@@ -203,6 +212,8 @@ v1.34 — 2020 December 10
   which are now deprecated (but will continue to be supported).
   See :ref:`reference_frames`.
   `#476 <https://github.com/skyfielders/python-skyfield/issues/476>`_
+
+* Added an official :class:`~skyfield.framelib.itrs` reference frame.
 
 * Added support for IERS :ref:`polar motion` 𝑥 and 𝑦.
 
