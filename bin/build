@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -ex
+
+cd "$(readlink -f $(dirname "${BASH_SOURCE[0]}"))"
+cd ..
+
+python setup.py sdist $@
+SKYFIELD_USE_SETUPTOOLS=yes python setup.py bdist_wheel $@

@@ -5,6 +5,30 @@ Changelog
 .. TODO After finding how to test TIRS reference frame, add it to changelog.
         And double-check the constellation boundaries array.
 
+v1.43.1 — 2022 July 6
+---------------------
+
+* An attempt at overly clever scripting resulted in a Skyfield 1.43
+  release without a ``setup.py`` in its ``.tar.gz``; within an hour, a
+  Python 2.7 user had reported that Skyfield could no longer install.
+  This release is identical to 1.43 but (hopefully) installs correctly
+  for everyone!
+
+v1.43 — 2022 July 6
+-------------------
+
+* Fixed :func:`~skyfield.magnitudelib.planetary_magnitude()` so it works
+  for Saturn even when the time is an array rather than a single time;
+  also, improved its calculation slightly with respect to Uranus.
+  `#739 <https://github.com/skyfielders/python-skyfield/issues/739>`_
+
+* Improved :func:`~skyfield.data.mpc.load_comets_dataframe()` so that
+  parsing ``CometEls.txt`` with the most recent version of Pandas
+  doesn’t stumble over the commas in the final field of (for example)
+  Halley’s Comet and give the error ``ParserError: Error tokenizing
+  data. C error: Expected 12 fields…saw 13``.
+  `#707 <https://github.com/skyfielders/python-skyfield/issues/707>`_
+
 v1.42 — 2022 February 6
 -----------------------
 
